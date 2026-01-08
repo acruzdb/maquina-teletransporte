@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destino Alcanzado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="container">
+        <h2 class="titulo-galeria">El espacio y el tiempo son relativos, por eso aunque ahora no estemos juntos, puede que en otro espacio/tiempo si lo estemos</h2>
+        
+        <div class="carrusel">
+            <img src="fotos/foto1.jpeg" alt="Foto 1" class="slide active">
+            <img src="fotos/foto2.jpeg" alt="Foto 2" class="slide">
+            <img src="fotos/foto3.jpeg" alt="Foto 3" class="slide">
+			<img src="fotos/foto4.jpeg" alt="Foto 4" class="slide">
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="index.html" class="volver-link">← Regresar al presente</a>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function moveSlide(n) {
+            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // --- NUEVO: AUTOPLAY ---
+        // Cambia de imagen automáticamente cada 3 segundos (3000ms)
+        setInterval(function() {
+            moveSlide(1); // Llama a la función para avanzar 1
+        }, 3000);
+
+    </script>
+</body>
+</html>
